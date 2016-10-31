@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jquery Ajax Test</title>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<h1>Jquery Ajax Test</h1>
+
+<input type="text" placeholder="Enter a rest url" id="rest_url" style="width: 50%"/>
+<br> 
+<br> 
+<input type="button" value="send" id="username">
+<br>
+<br>
+<pre id="resultarea">
+</pre>
+ 
+<script>
+	$( "#username" ).click(function() {
+		
+		var formData = {some_param: 'some_value'};
+
+		$.ajax(
+			{
+				url: $("#rest_url").val(),
+				type: "GET",
+				data : formData,
+				dataType: "json",
+				success: function(data, textStatus, jqXHR)
+				{
+					
+					var pretty = JSON.stringify(data, undefined, 4);
+					$("#resultarea").text(pretty);
+				},
+				error: function(jqXHR, textStatus, errorThrown)
+				{
+					$("#result_area").text(errorThrown);
+				}
+			}
+		);
+	});
+</script>
+ 
+</body>
+</html>
