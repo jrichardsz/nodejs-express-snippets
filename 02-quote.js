@@ -1,3 +1,7 @@
+/*
+http://localhost:8080/quotes
+*/
+
 var express = require('express');
 var app = express();
 
@@ -10,7 +14,7 @@ var quotes = [
 
 app.use(express.bodyParser());
 
-app.get('/', function(req, res) {
+app.get('/quotes', function(req, res) {
   res.json(quotes);
 });
 
