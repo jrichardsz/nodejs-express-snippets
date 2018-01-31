@@ -1,0 +1,45 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+    $( document ).ready(function() {
+        console.log( "document loaded" );
+        $('#search').click(getPoster);
+    });
+
+    var getPoster = function(){
+
+        var apiUrl = $("#api").val();
+
+        $.ajax({
+            type: 'GET',
+            url: apiUrl,
+            data: { get_param: 'value' },
+            success: function (data) {
+                console.log(data);
+            }
+        });
+
+    }
+
+
+    </script>
+</head>
+<body>
+    <div class="container">
+       <header>
+          <h1>Api Test</h1>
+       </header>
+       <section id="fetch">
+          <input type="text" placeholder="Enter an url" id="api" style="width:500px"/>
+          <br><br>
+          <button id="search">Get data from api</button>
+       </section>
+       <section id="poster">
+       </section>
+       <footer>
+          <p>Created by <a href="http://jrichardsz.github.io/">Richard</a></p>
+       </footer>
+    </div>
+</body>
+</html>
