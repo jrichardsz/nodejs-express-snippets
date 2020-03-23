@@ -4,6 +4,7 @@ http://localhost:8080/quotes
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 var quotes = [
   { author : 'Audrey Hepburn', text : "Nothing is impossible, the word itself says 'I'm possible'!"},
@@ -12,7 +13,7 @@ var quotes = [
   { author : 'Neale Donald Walsch', text : "You are afraid to die, and you’re afraid to live. What a way to exist."}
 ];
 
-app.use(express.bodyParser());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/quotes', function(req, res) {
   res.json(quotes);

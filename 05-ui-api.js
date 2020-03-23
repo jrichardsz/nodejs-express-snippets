@@ -5,6 +5,7 @@ http://localhost:8080/quotes
 var express = require('express');
 var app = express();
 var cors = require('cors'); //http://stackoverflow.com/a/21622564/3957754
+var bodyParser = require('body-parser');
 
 var response = {
  "idForm": "F105",
@@ -29,7 +30,7 @@ var response = {
  ]
 }
 
-app.use(express.bodyParser());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(cors());
 
