@@ -4,7 +4,12 @@
   "private": true,
   "version": "0.0.1",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "2.8.1",
     "express": "4.17.1"
   },
+  "scripts": {
+    "start": "node index.js"
+  },  
   "main": "quote"
 }

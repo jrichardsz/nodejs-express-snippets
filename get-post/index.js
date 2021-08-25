@@ -35,6 +35,17 @@ app.get('/quote/:id', function(req, res) {
   res.json(q);
 });
 
+//Query parameters : acme.com/quote?id=5
+app.get('/quote', function(req, res) {
+  if(quotes.length <= req.query.id || req.query.id < 0) {
+    res.statusCode = 404;
+    return res.send('Error 404: No quote found');
+  }
+
+  var q = quotes[req.query.id];
+  res.json(q);
+});
+
 app.post('/quote', function(req, res) {
   if(!req.body.hasOwnProperty('author') || !req.body.hasOwnProperty('text')) {
     res.statusCode = 400;
@@ -50,6 +61,7 @@ app.post('/quote', function(req, res) {
   res.json(true);
 });
 
+//Url parameters: acme.com/quote/id
 app.delete('/quote/:id', function(req, res) {
   if(quotes.length <= req.params.id) {
     res.statusCode = 404;
