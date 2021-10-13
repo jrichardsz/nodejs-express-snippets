@@ -1,1 +1,4 @@
 node_modules
+#!simple-static-server/site/
+simple-static-server/site/*
+!simple-static-server/site/.gitkeep
