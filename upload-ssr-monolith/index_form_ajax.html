@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+
+    <p>User registration</p>
+
+    <form id="registerForm" action="/upload" method="POST" autocomplete="off"  >
+        <label htmlFor="login">Username</label><br>
+        <input type="text" id="username" name="username" />
+        <br><br>
+        <label htmlFor="login">Image profile</label><br>
+        <input type="file" id="imageProfile" name="imageProfile" />
+        <br><br>
+        <input type="submit" value="Register" />
+        <br><br>
+        <div id="result" />
+    </form>
+
+    <script>
+
+        var form = document.getElementById("registerForm");
+        if (form.addEventListener) {
+            form.addEventListener("submit", onRegisterEvent, false);  //Modern browsers
+        } else if (ele.attachEvent) {
+            alert("Old browser is not supported")
+        }
+
+        function onRegisterEvent(e) {
+            e.preventDefault();  
+            var data, xhr;
+
+            data = new FormData();
+            data.append('imageProfile', document.getElementById("imageProfile").files[0]);
+            data.append('username', document.getElementById("username").value);
+
+            xhr = new XMLHttpRequest();
+
+            xhr.open('POST', './upload', true);
+            xhr.onreadystatechange = function (response) {
+                document.getElementById("result").innerHTML = xhr.responseText
+            };
+            xhr.send(data);
+        }
+    </script>
+
+</body>
+
+</html>

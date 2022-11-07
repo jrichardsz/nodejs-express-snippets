@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <p>User registration</p>
+    <form id="registerForm" action="/upload" method="POST" autocomplete="off" enctype="multipart/form-data">
+        <label htmlFor="login">Username</label><br>
+        <input type="text" id="username" name="username" />
+        <br><br>
+        <label htmlFor="login">Image profile</label><br>
+        <input type="file" id="imageProfile" name="imageProfile" />
+        <br><br>
+        <input type="submit" value="Register" />
+        <br><br>
+        <div id="result" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="data:,">
+</head>
+
+<body>
+
+    <p>User registration</p>
+
+    <label htmlFor="login">Username</label><br>
+    <input type="text" id="username" name="username" />
+    <br><br>
+    <label htmlFor="login">Image profile</label><br>
+    <input type="file" id="imageProfile" name="imageProfile" />
+    <br><br>
+    <button id="registerButton" >Register</button> 
+    <br><br>
+    <div id="result" />
+
+    <script>
+
+        var registerButton = document.getElementById("registerButton");
+        registerButton.addEventListener("click", onRegisterEvent);
+
+        function onRegisterEvent(e) {
+            var data, xhr;
+
+            data = new FormData();
+            data.append('imageProfile', document.getElementById("imageProfile").files[0]);
+            data.append('username', document.getElementById("username").value);
+
+            xhr = new XMLHttpRequest();
+
+            xhr.open('POST', './upload', true);
+            xhr.onreadystatechange = function (response) {
+                document.getElementById("result").innerHTML = xhr.responseText
+            };
+            xhr.send(data);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="data:,">
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"></script>
+</head>
+
+<body>
+
+<p>User registration</p>
+
+<form action="/upload" method="POST">
+    <label htmlFor="login">Username</label><br>
+    <input type="text" id="username" name="username"/>
+    <br><br>
+    <label htmlFor="login">Image profile</label><br>
+    <input type="file" id="imageProfile" name="imageProfile"/>  
+    <br><br>
+    <input type="submit" value="Register" />
+    <br><br>
+    <div id="result"/>
+</form>
+
+<script>
+$( 'form' ).submit(function ( e ) {
+    e.preventDefault();    
+    var data, xhr;
+
+    data = new FormData();
+    data.append( 'imageProfile', $( '#imageProfile' )[0].files[0] );
+    data.append( 'username', $( '#username' ).val() );
+
+    xhr = new XMLHttpRequest();
+
+    xhr.open( 'POST', './upload', true );
+    xhr.onreadystatechange = function ( response ) {
+        $( '#result' ).text(xhr.responseText);
+    };
+    xhr.send( data );
+
+});
+</script>
+
+</body>
+</html>
